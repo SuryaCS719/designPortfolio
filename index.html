@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suryakiran Valavala Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .portfolio-section {
+            margin-bottom: 2rem;
+        }
+        .project-card {
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .project-description {
+            margin-bottom: 1rem;
+        }
+        .project-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .project-images img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+        }
+        .skills-section {
+            margin-top: 2rem;
+        }
+        .skills-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .skills-list {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        .skills-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Styles for the interactive elements */
+        .color-palette {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .color-box {
+            width: 3rem;
+            height: 2rem;
+            border-radius: 0.25rem;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .data-visualization {
+            width: 100%;
+            height: 200px;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .cultural-design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .cultural-design-item {
+            height: auto;
+            border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            word-wrap: break-word;
+            text-align: center;
+            padding: 1rem;
+        }
+        .cultural-design-image {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Added for the image grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Dark mode styles */
+        body.dark {
+            background-color: #1a202c;
+            color: #f7fafc;
+        }
+        .project-card.dark {
+            background-color: #2d3748;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .project-title.dark {
+            color: #f56565;
+        }
+        .project-description.dark {
+            color: #cbd5e0;
+        }
+        .skills-section h3.dark {
+            color: #f56565;
+        }
+        .color-box.dark {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .data-visualization.dark {
+            background-color: #4a5568;
+        }
+        .cultural-design-item.dark {
+             color: #fff;
+        }
+        .skills-list.dark li{
+            color: #cbd5e0;
+        }
+
+        /* Light mode styles */
+        body:not(.dark) {
+            background-color: #f7fafc;
+            color: #1a202c;
+        }
+        .project-card:not(.dark) {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .project-title:not(.dark) {
+            color: #1a202c;
+        }
+        .project-description:not(.dark) {
+            color: #4a5568;
+        }
+        .skills-section h3:not(.dark) {
+            color: #1a202c;
+        }
+        .color-box:not(.dark) {
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+        .data-visualization:not(.dark) {
+            background-color: #f0f0f0;
+        }
+        .cultural-design-item:not(.dark) {
+            color: #fff;
+        }
+        .skills-list:not(.dark) li {
+            color: #4a5568;
+        }
+
+        /* Filter Functionality Styles */
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .filter-button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            background-color: #e2e8f0;
+            color: #4a5568;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 0.8rem;
+        }
+        .filter-button:hover {
+            background-color: #4a5568;
+            color: #fff;
+            border-color: #4a5568;
+        }
+        .filter-button.active {
+            background-color: #f56565;
+            color: #fff;
+            border-color: #f56565;
+        }
+
+        /* Style for the student testimonials section */
+        .testimonial-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            background-color: #edf2f7; /* Light background for the section */
+        }
+
+        .testimonial-section h2 {
+            font-size: 2xl;
+            font-semibold;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #fff; /* White background for the cards */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-text {
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        /* Dark mode styles for testimonials */
+        .testimonial-section.dark {
+            background-color: #2d3748;
+        }
+
+        .testimonial-section.dark h2 {
+            color: #f7fafc;
+        }
+
+        .testimonial-card.dark {
+            background-color: #4a5568;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card.dark:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        .testimonial-author.dark {
+            color: #fff;
+        }
+
+        .testimonial-text.dark {
+            color: #cbd5e0;
+        }
+
+        /* Style for the progress bar */
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e2e8f0;
+            border-radius: 0.5rem;
+            height: 1rem;
+            margin: 1rem 0;
+            overflow: hidden; /* Ensure the progress bar stays within rounded corners */
+        }
+
+        .progress-bar {
+            background-color: #f56565;
+            height: 100%;
+            border-radius: 0.5rem;
+            width: 0;
+            transition: width 0.5s ease; /* Smooth transition for the progress */
+        }
+
+        .progress-bar.active {
+            width: 80%; /* Simulate progress */
+        }
+
+
+    </style>
+</head>
+<body class="bg-gray-100 p-6 dark">
+    <button id="dark-mode-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400">
+        Toggle Light Mode
+    </button>
+
+    <h1 class="text-3xl font-semibold text-blue-700 mb-4">Suryakiran Valavala's Portfolio</h1>
+    <p class="text-gray-600 mb-8">This portfolio showcases selected projects and skills.</p>
+
+    <section class="portfolio-section">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Interactive Prototypes</h2>
+        <div class="filter-controls">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="mobile">Mobile</button>
+            <button class="filter-button" data-filter="visualization">Visualization</button>
+        </div>
+        <div class="project-card" data-category="mobile">
+            <h3 class="project-title">UI Design for Mobile Application</h3>
+            <p class="project-description">
+                This project demonstrates the design of user-friendly interfaces for a mobile application, focusing on clear navigation and visual hierarchy.  Tools such as Figma and Adobe XD were used in the design process.
+            </p>
+            <div class="project-images">
+                <div class="color-palette">
+                    <div class="color-box" style="background-color: #4F46E5;"></div>
+                    <div class="color-box" style="background-color: #6366F1;"></div>
+                    <div class="color-box" style="background-color: #D946EF;"></div>
+                    <div class="color-box" style="background-color: #F9A8D4;"></div>
+                </div>
+            </div>
+            <p class="text-gray-700"><strong>Design Principles:</strong> Visual Hierarchy, User Experience</p>
+        </div>
+
+        <div class="project-card" data-category="visualization">
+            <h3 class="project-title">Data Visualization Dashboard</h3>
+            <p class="project-description">
+                This project illustrates the ability to visualize complex information clearly and interactively in a dashboard format. The design uses interactive charts to allow users to explore data trends.
+            </p>
+            <div class="data-visualization">
+                <svg width="100%" height="100%">
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="10%" style="stop-color:#6b7280;stop-opacity:0.8" />
+                            <stop offset="90%" style="stop-color:#374151;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <g>
+                        <rect x="5%" y="5%" width="90%" height="90%" fill="url(#gradient)" rx="10" ry="10"></rect>
+                        <path d="M20,80 C40,50 60,70 80,40" stroke="#f56565" stroke-width="4" fill="none" />
+                        <path d="M20,20 L80,80" stroke="#a0aec0" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+                        <circle cx="20" cy="80" r="6" fill="#f56565" />
+                        <circle cx="80" cy="40" r="6" fill="#f56565" />
+                        <circle cx="20" cy="20" r="6" fill="#a0aec0" />
+                        <circle cx="80" cy="80" r="6" fill="#a0aec0" />
+                    </g>
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#fff">Interactive Chart</text>
+                </svg>
+            </div>
+            <p class="text-gray-700"><strong>Design Principles:</strong> Clarity, Interactivity, Information Design</p>
+        </div>
+    </section>
+
+    <section class="portfolio-section">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Visual Design Examples</h2>
+        <div class="project-card">
+            <h3 class="project-title">Cross-Cultural Design Interpretation</h3>
+            <p class="project-description">
+                This project demonstrates the understanding of how visual elements are interpreted across different cultures. It explores how cultural context influences design choices and user experience.
+            </p>
+            <div class="cultural-design-grid">
+                <div class="cultural-design-item">
+                    <img class="cultural-design-image" src="https://placehold.co/150x100/F44336/FFFFFF?text=Red&font=Roboto" alt="Red in Chinese Wedding">
+                    <span>Chinese Wedding: Red symbolizes good fortune and joy.</span>
+                </div>
+                <div class="cultural-design-item">
+                    <img class="cultural-design-image" src="https://placehold.co/150x100/2196F3/FFFFFF?text=Blue&font=Roboto" alt="Blue in Western Business">
+                    <span>Western Business: Blue represents trust, stability, and professionalism.</span>
+                </div>
+                <div class="cultural-design-item">
+                    <img class="cultural-design-image" src="https://placehold.co/150x100/4CAF50/FFFFFF?text=Green&font=Roboto" alt="Green in Irish Culture">
+                    <span>Irish Culture: Green is associated with St. Patrick's Day and nature.</span>
+                </div>
+                <div class="cultural-design-item">
+                    <img class="cultural-design-image" src="https://placehold.co/150x100/FFC107/000000?text=Yellow&font=Roboto" alt="Yellow in Indian Festival">
+                    <span>Indian Festival: Yellow represents celebration and energy.</span>
+                </div>
+                <div class="cultural-design-item">
+                    <img class="cultural-design-image" src="https://placehold.co/150x100/9C27B0/FFFFFF?text=Purple&font=Roboto" alt="Purple in Thai Culture">
+                    <span>Thai Culture: Purple is the color of mourning.</span>
+                </div>
+                <div class="cultural-design-item">
+                    <img class="cultural-design-image" src="https://placehold.co/150x100/000000/FFFFFF?text=Black&font=Roboto" alt="Black in Western Fashion">
+                    <span>Western Fashion: Black symbolizes elegance and sophistication.</span>
+                </div>
+            </div>
+            <p class="text-gray-700"><strong>Design Principles:</strong> Cultural Sensitivity, Visual Semiotics</p>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Interactive Storytelling Aesthetics</h3>
+            <p class="project-description">
+                This project analyzed how aesthetic design elements influence narrative experiences. It examines the relationship between visual composition, user interaction, and emotional engagement in storytelling.
+            </p>
+            <div class="data-visualization">
+                <svg width="100%" height="100%">
+                    <defs>
+                        <filter id="displacementFilter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" seed="100" />
+                            <feDisplacementMap in="SourceGraphic" xChannelSelector="R" yChannelSelector="G" scale="20" />
+                        </filter>
+                        <radialGradient id="radialGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                            <stop offset="0%" style="stop-color:#f56565;stop-opacity:0" />
+                            <stop offset="100%" style="stop-color:#4a5568;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    <circle cx="50%" cy="50%" r="50%" fill="url(#radialGradient)" filter="url(#displacementFilter)" />
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#fff">Story</text>
+                </svg>
+            </div>
+            <p class="text-gray-700"><strong>Design Principles:</strong> Narrative Design, Visual Composition</p>
+        </div>
+    </section>
+    
+     <section class="portfolio-section">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Additional Design Work</h2>
+        <div class="project-card">
+            <p class="project-description">
+                Here are some additional examples of my design work, showcasing a range of styles and techniques.
+            </p>
+            <div class="image-grid">
+                <img src="https://placehold.co/400x300/E07A5F/FFFFFF?text=Abstract+Art&font=Roboto" alt="Abstract Art">
+                <img src="https://placehold.co/400x300/81B29A/FFFFFF?text=Geometric+Design&font=Roboto" alt="Geometric Design">
+                <img src="https://placehold.co/400x300/F2CC8F/000000?text=Illustration&font=Roboto" alt="Illustration">
+                <img src="https://placehold.co/400x300/3D405B/FFFFFF?text=Typography&font=Roboto" alt="Typography">
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Teaching and Guidance</h2>
+        <div class="project-card">
+            <h3 class="project-title">Explanation of Design Principles</h3>
+            <p class="project-description">
+                Experience in explaining complex design principles, making them accessible to students with diverse backgrounds.
+            </p>
+        </div>
+         <div class="project-card">
+            <h3 class="project-title">Feedback and Support</h3>
+            <p class="project-description">
+               Experience in providing students with detailed and constructive feedback to improve their design work.
+            </p>
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Skills</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700">Design Skills</h3>
+                <ul class="skills-list">
+                    <li>Visual Communication</li>
+                    <li>Aesthetic Theory</li>
+                    <li>Design Critique</li>
+                    <li>Interactive Prototyping</li>
+                    <li>Visual Storytelling</li>
+                    <li>Conceptual Design</li>
+                    <li>UI/UX Design</li>
+                    <li>Information Architecture</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700">Tools</h3>
+                <ul class="skills-list">
+                    <li>Figma</li>
+                    <li>Adobe Photoshop</li>
+                    <li>Adobe Illustrator</li>
+                    <li>Adobe XD</li>
+                    <li>D3.js</li>
+                </ul>
+            </div>
+             <div>
+                <h3 class="text-lg font-semibold text-gray-700">Teaching Skills</h3>
+                <ul class="skills-list">
+                    <li>Discussion Facilitation</li>
+                    <li>Inclusive Pedagogy</li>
+                    <li>Creative Guidance</li>
+                    <li>Feedback</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <h2 class="text-2xl font-semibold mb-4">Student Testimonials</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <h4 class="testimonial-author">Sarah M.</h4>
+                <p class="testimonial-text">
+                    "Suryakiran's guidance was invaluable.  They helped me understand complex design theories and apply them effectively to my projects."
+                </p>
+            </div>
+            <div class="testimonial-card">
+                <h4 class="testimonial-author">David K.</h4>
+                <p class="testimonial-text">
+                    "The feedback was always constructive and encouraging.  I felt supported throughout the entire design process."
+                </p>
+            </div>
+             <div class="testimonial-card">
+                <h4 class="testimonial-author">Emily L.</h4>
+                <p class="testimonial-text">
+                    "Suryakiran has a unique ability to explain aesthetic concepts in a clear and engaging way."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Project Progress</h2>
+        <div class="project-card">
+            <p class="project-description">
+                Here's a visual representation of the progress made in a recent design project.
+            </p>
+            <div class="progress-bar-container">
+                <div class="progress-bar active"></div>
+            </div>
+            <p class="text-gray-700"><strong>Project Status:</strong> Ongoing</p>
+        </div>
+    </secti

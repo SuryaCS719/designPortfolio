@@ -16,18 +16,21 @@
             margin-bottom: 2rem;
         }
         .project-card {
+            background-color: #2d3748; /* Dark background for project cards */
             border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Stronger shadow in dark mode */
             padding: 2rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .project-title {
             font-size: 1.5rem;
             font-weight: 500;
             margin-bottom: 1rem;
+            color: #f56565; /* Red title in dark mode */
         }
         .project-description {
             margin-bottom: 1rem;
+            color: #cbd5e0; /* Lighter text in dark mode */
         }
         .project-images {
             display: flex;
@@ -47,6 +50,7 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            color: #f56565; /* Red heading in dark mode */
         }
         .skills-list {
             list-style-position: inside;
@@ -54,6 +58,7 @@
         }
         .skills-list li {
             margin-bottom: 0.5rem;
+            color: #cbd5e0; /* Lighter text in dark mode */
         }
 
         /* Styles for the interactive elements */
@@ -66,21 +71,22 @@
             width: 3rem;
             height: 2rem;
             border-radius: 0.25rem;
-            border: 1px solid rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Lighter border in dark mode */
         }
         .data-visualization {
             width: 100%;
             height: 200px;
+            background-color: #4a5568; /* Darker background for visualization */
             border-radius: 0.5rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow: hidden; /* Clip the SVG */
         }
         .cultural-design-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
             gap: 1rem;
             margin-bottom: 1rem;
         }
@@ -120,209 +126,47 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* Dark mode styles */
-        body.dark {
+        /* Dark mode styles - applied by default */
+        body {
             background-color: #1a202c;
             color: #f7fafc;
         }
-        .project-card.dark {
+        .project-card {
             background-color: #2d3748;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
-        .project-title.dark {
+        .project-title {
             color: #f56565;
         }
-        .project-description.dark {
+        .project-description {
             color: #cbd5e0;
         }
-        .skills-section h3.dark {
+        .skills-section h3 {
             color: #f56565;
         }
-        .color-box.dark {
+        .color-box {
             border-color: rgba(255, 255, 255, 0.2);
         }
-        .data-visualization.dark {
+        .data-visualization {
             background-color: #4a5568;
         }
-        .cultural-design-item.dark {
+        .cultural-design-item {
              color: #fff;
         }
-        .skills-list.dark li{
+        .skills-list li{
             color: #cbd5e0;
         }
-
-        /* Light mode styles */
-        body:not(.dark) {
-            background-color: #f7fafc;
-            color: #1a202c;
+        #dark-mode-toggle {
+            display: none; /* Hide the dark mode toggle button */
         }
-        .project-card:not(.dark) {
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .project-title:not(.dark) {
-            color: #1a202c;
-        }
-        .project-description:not(.dark) {
-            color: #4a5568;
-        }
-        .skills-section h3:not(.dark) {
-            color: #1a202c;
-        }
-        .color-box:not(.dark) {
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-        .data-visualization:not(.dark) {
-            background-color: #f0f0f0;
-        }
-        .cultural-design-item:not(.dark) {
-            color: #fff;
-        }
-        .skills-list:not(.dark) li {
-            color: #4a5568;
-        }
-
-        /* Filter Functionality Styles */
-        .filter-controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .filter-button {
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            background-color: #e2e8f0;
-            color: #4a5568;
-            cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.1);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            font-size: 0.8rem;
-        }
-        .filter-button:hover {
-            background-color: #4a5568;
-            color: #fff;
-            border-color: #4a5568;
-        }
-        .filter-button.active {
-            background-color: #f56565;
-            color: #fff;
-            border-color: #f56565;
-        }
-
-        /* Style for the student testimonials section */
-        .testimonial-section {
-            margin-top: 2rem;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            background-color: #edf2f7; /* Light background for the section */
-        }
-
-        .testimonial-section h2 {
-            font-size: 2xl;
-            font-semibold;
-            color: #1a202c;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .testimonial-card {
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            background-color: #fff; /* White background for the cards */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-0.5rem);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: #1a202c;
-            margin-bottom: 0.5rem;
-        }
-
-        .testimonial-text {
-            color: #4a5568;
-            line-height: 1.5;
-        }
-
-        /* Dark mode styles for testimonials */
-        .testimonial-section.dark {
-            background-color: #2d3748;
-        }
-
-        .testimonial-section.dark h2 {
-            color: #f7fafc;
-        }
-
-        .testimonial-card.dark {
-            background-color: #4a5568;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial-card.dark:hover {
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
-        }
-
-        .testimonial-author.dark {
-            color: #fff;
-        }
-
-        .testimonial-text.dark {
-            color: #cbd5e0;
-        }
-
-        /* Style for the progress bar */
-        .progress-bar-container {
-            width: 100%;
-            background-color: #e2e8f0;
-            border-radius: 0.5rem;
-            height: 1rem;
-            margin: 1rem 0;
-            overflow: hidden; /* Ensure the progress bar stays within rounded corners */
-        }
-
-        .progress-bar {
-            background-color: #f56565;
-            height: 100%;
-            border-radius: 0.5rem;
-            width: 0;
-            transition: width 0.5s ease; /* Smooth transition for the progress */
-        }
-
-        .progress-bar.active {
-            width: 80%; /* Simulate progress */
-        }
-
-
     </style>
 </head>
-<body class="bg-gray-100 p-6 dark">
-    <button id="dark-mode-toggle" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400">
-        Toggle Light Mode
-    </button>
-
-    <h1 class="text-3xl font-semibold text-blue-700 mb-4">Suryakiran Valavala's Portfolio</h1>
-    <p class="text-gray-600 mb-8">This portfolio showcases selected projects and skills.</p>
+<body class="bg-gray-100 p-6 dark"> <h1 class="text-3xl font-semibold text-blue-700 mb-4 dark:text-blue-300">Suryakiran Valavala's Portfolio</h1>
+    <p class="text-gray-600 mb-8 dark:text-gray-400">This portfolio showcases selected projects and skills.</p>
 
     <section class="portfolio-section">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Interactive Prototypes</h2>
-        <div class="filter-controls">
-            <button class="filter-button active" data-filter="all">All</button>
-            <button class="filter-button" data-filter="mobile">Mobile</button>
-            <button class="filter-button" data-filter="visualization">Visualization</button>
-        </div>
-        <div class="project-card" data-category="mobile">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4 dark:text-gray-200">Interactive Prototypes</h2>
+        <div class="project-card">
             <h3 class="project-title">UI Design for Mobile Application</h3>
             <p class="project-description">
                 This project demonstrates the design of user-friendly interfaces for a mobile application, focusing on clear navigation and visual hierarchy.  Tools such as Figma and Adobe XD were used in the design process.
@@ -335,10 +179,10 @@
                     <div class="color-box" style="background-color: #F9A8D4;"></div>
                 </div>
             </div>
-            <p class="text-gray-700"><strong>Design Principles:</strong> Visual Hierarchy, User Experience</p>
+            <p class="text-gray-700 dark:text-gray-400"><strong>Design Principles:</strong> Visual Hierarchy, User Experience</p>
         </div>
 
-        <div class="project-card" data-category="visualization">
+        <div class="project-card">
             <h3 class="project-title">Data Visualization Dashboard</h3>
             <p class="project-description">
                 This project illustrates the ability to visualize complex information clearly and interactively in a dashboard format. The design uses interactive charts to allow users to explore data trends.
@@ -363,12 +207,12 @@
                     <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="16" fill="#fff">Interactive Chart</text>
                 </svg>
             </div>
-            <p class="text-gray-700"><strong>Design Principles:</strong> Clarity, Interactivity, Information Design</p>
+            <p class="text-gray-700 dark:text-gray-400"><strong>Design Principles:</strong> Clarity, Interactivity, Information Design</p>
         </div>
     </section>
 
     <section class="portfolio-section">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Visual Design Examples</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4 dark:text-gray-200">Visual Design Examples</h2>
         <div class="project-card">
             <h3 class="project-title">Cross-Cultural Design Interpretation</h3>
             <p class="project-description">
@@ -400,7 +244,7 @@
                     <span>Western Fashion: Black symbolizes elegance and sophistication.</span>
                 </div>
             </div>
-            <p class="text-gray-700"><strong>Design Principles:</strong> Cultural Sensitivity, Visual Semiotics</p>
+            <p class="text-gray-700 dark:text-gray-400"><strong>Design Principles:</strong> Cultural Sensitivity, Visual Semiotics</p>
         </div>
 
         <div class="project-card">
@@ -424,12 +268,12 @@
                     <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="18" fill="#fff">Story</text>
                 </svg>
             </div>
-            <p class="text-gray-700"><strong>Design Principles:</strong> Narrative Design, Visual Composition</p>
+            <p class="text-gray-700 dark:text-gray-400"><strong>Design Principles:</strong> Narrative Design, Visual Composition</p>
         </div>
     </section>
     
      <section class="portfolio-section">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Additional Design Work</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4 dark:text-gray-200">Additional Design Work</h2>
         <div class="project-card">
             <p class="project-description">
                 Here are some additional examples of my design work, showcasing a range of styles and techniques.
@@ -444,7 +288,7 @@
     </section>
 
     <section class="portfolio-section">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Teaching and Guidance</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4 dark:text-gray-200">Teaching and Guidance</h2>
         <div class="project-card">
             <h3 class="project-title">Explanation of Design Principles</h3>
             <p class="project-description">
@@ -460,10 +304,10 @@
     </section>
 
     <section class="skills-section">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Skills</h2>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4 dark:text-gray-200">Skills</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <h3 class="text-lg font-semibold text-gray-700">Design Skills</h3>
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Design Skills</h3>
                 <ul class="skills-list">
                     <li>Visual Communication</li>
                     <li>Aesthetic Theory</li>
@@ -476,7 +320,7 @@
                 </ul>
             </div>
             <div>
-                <h3 class="text-lg font-semibold text-gray-700">Tools</h3>
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Tools</h3>
                 <ul class="skills-list">
                     <li>Figma</li>
                     <li>Adobe Photoshop</li>
@@ -486,7 +330,7 @@
                 </ul>
             </div>
              <div>
-                <h3 class="text-lg font-semibold text-gray-700">Teaching Skills</h3>
+                <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">Teaching Skills</h3>
                 <ul class="skills-list">
                     <li>Discussion Facilitation</li>
                     <li>Inclusive Pedagogy</li>
@@ -496,40 +340,10 @@
             </div>
         </div>
     </section>
-
-    <section class="testimonial-section">
-        <h2 class="text-2xl font-semibold mb-4">Student Testimonials</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <h4 class="testimonial-author">Sarah M.</h4>
-                <p class="testimonial-text">
-                    "Suryakiran's guidance was invaluable.  They helped me understand complex design theories and apply them effectively to my projects."
-                </p>
-            </div>
-            <div class="testimonial-card">
-                <h4 class="testimonial-author">David K.</h4>
-                <p class="testimonial-text">
-                    "The feedback was always constructive and encouraging.  I felt supported throughout the entire design process."
-                </p>
-            </div>
-             <div class="testimonial-card">
-                <h4 class="testimonial-author">Emily L.</h4>
-                <p class="testimonial-text">
-                    "Suryakiran has a unique ability to explain aesthetic concepts in a clear and engaging way."
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="portfolio-section">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Project Progress</h2>
-        <div class="project-card">
-            <p class="project-description">
-                Here's a visual representation of the progress made in a recent design project.
-            </p>
-            <div class="progress-bar-container">
-                <div class="progress-bar active"></div>
-            </div>
-            <p class="text-gray-700"><strong>Project Status:</strong> Ongoing</p>
-        </div>
-    </secti
+    <script>
+        // You can add JavaScript here to make the visualizations interactive
+        // For example, you could add hover effects to the data visualization
+        // or make the color palette interactive.
+    </script>
+</body>
+</html>
